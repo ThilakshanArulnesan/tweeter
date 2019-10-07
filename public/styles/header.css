@@ -1,0 +1,15 @@
+header {
+  height: 400px;
+  width: 100%;
+  position: absolute;
+  top: 120px;
+  background-color: #8D9DD4;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+header div {
+  position: relative;
+  text-align: center;
+  color: lavender;
+}
