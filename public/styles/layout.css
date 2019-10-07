@@ -12,22 +12,6 @@ html {
   box-sizing: inherit;
 }
 
-header {
-  height: 400px;
-  width: 100%;
-  position: absolute;
-  top: 120px;
-  background-color: #8D9DD4;
-  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
-
-header div {
-  position: relative;
-  text-align: center;
-  color: lavender;
-}
-
 body {
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -40,6 +24,15 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+  position: relative;
+  top: 520px;
+  background-color: #f4f1ec;
+  /*centers it*/
 }
 
 /*

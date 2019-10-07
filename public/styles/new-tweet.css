@@ -1,0 +1,23 @@
+.new-tweet input {
+  border-bottom: 2px;
+  color: lavender;
+  background: #4056A1;
+  display: inline;
+  font-family: 'Bungee', sans-serif;
+}
+
+.new-tweet textarea {
+  border-bottom-color: black;
+  color: black;
+  font-weight: 600;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 100%;
+  height: 1.5em;
+}
+
+.new-tweet .counter {
+  float: right;
+  color: green;
+}
