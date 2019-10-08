@@ -1,15 +1,25 @@
-header {
+#main-header {
   height: 400px;
   width: 100%;
   position: absolute;
   top: 120px;
   background-color: #8D9DD4;
+  font-family: 'Source Sans Pro', sans-serif;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-header div {
+#main-header div {
   position: relative;
   text-align: center;
   color: lavender;
+}
+
+#main-header h2 {
+  color: white;
+  font-weight: 300;
+}
+
+#main-header h2 b {
+  font-weight: 700;
 }

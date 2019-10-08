@@ -8,6 +8,7 @@
 
 .new-tweet textarea {
   border-bottom-color: black;
+  resize: none;
   color: black;
   font-weight: 600;
   border-left: none;
@@ -20,4 +21,9 @@
 .new-tweet .counter {
   float: right;
   color: green;
+}
+
+.new-tweet .counter.overlimit {
+  float: right;
+  color: red;
 }

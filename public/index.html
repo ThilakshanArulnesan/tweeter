@@ -16,12 +16,14 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 </head>
 
 <body>
@@ -31,13 +33,13 @@
     <span>tweeter</span>
   </nav>
 
-  <header>
+  <header id="main-header">
     <div>
       <img src="/images/profile-hex.png">
     </div>
     <br>
     <div>
-      <h2>Your Name</h2>
+      <h2><b>Thilakshan</b> Arulnesan</h2>
     </div>
   </header>
 
@@ -51,6 +53,69 @@
         <input type="submit" value="Tweet">
         <span class="counter">140</span>
       </form>
+
+      <!-- Container for all the tweets -->
+      <section class="tweet-container">
+
+        <!-- This is a tweet: -->
+        <article>
+          <header class="flex-container">
+            <img class="small-profile-image" src="/images/profile-hex.png">
+            <div>
+              Newton
+            </div>
+            <div class="handle">
+              @SirIsaac
+            </div>
+          </header>
+          <div class="tweet-body">
+            This is the body.
+          </div>
+          <footer class="flex-container">
+            <div class="date">
+              10 days ago.
+            </div>
+
+            <div class="icons flex-container">
+              <div name="report"> 🚩</div>
+              <div name="retweet">🔄</div>
+              <div name="like">♥️</div>
+            </div>
+
+          </footer>
+        </article>
+
+
+
+        <article>
+          <header class="flex-container">
+            <img class="small-profile-image" src="/images/profile-hex.png">
+            <div>
+              Newton
+            </div>
+            <div class="handle">
+              @SirIsaac
+            </div>
+          </header>
+          <div class="tweet-body">
+            This is the body.
+          </div>
+          <footer class="flex-container">
+            <div class="date">
+              10 days ago.
+            </div>
+
+            <div class="icons flex-container">
+              <div name="report"> 🚩</div>
+              <div name="retweet">🔄</div>
+              <div name="like">♥️</div>
+            </div>
+
+          </footer>
+        </article>
+
+      </section>
+
     </section>
   </main>
 
