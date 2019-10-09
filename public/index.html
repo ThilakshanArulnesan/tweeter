@@ -30,7 +30,17 @@
 
   <!-- Top nav bar (fixed) -->
   <nav>
+
     <span>tweeter</span>
+    <ul id='nav-buttons'>
+      <li class="nav-item">
+        <b>write</b> a new tweet
+      </li>
+      <li class="nav-item">
+        <a href="#"> <img id="downArrow" src="/images/down.png"></a>
+      </li>
+    </ul>
+
   </nav>
 
   <header id="main-header">
@@ -48,77 +58,37 @@
   <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <form action="/tweets/" method="POST">
-        <textarea name="text" placeholder="What are you humming about?"></textarea>
+      <form id="tweetPost">
+        <textarea name="text" placeholder="What are you humming about?" wrap="hard"></textarea>
         <input type="submit" value="Tweet">
         <span class="counter">140</span>
+        <audio id="audio" src="/sounds/denied.ogg" type="audio/ogg"></audio>
+
       </form>
 
-      <!-- Container for all the tweets -->
-      <section class="tweet-container">
-
-        <!-- This is a tweet: -->
-        <article>
-          <header class="flex-container">
-            <img class="small-profile-image" src="/images/profile-hex.png">
-            <div>
-              Newton
-            </div>
-            <div class="handle">
-              @SirIsaac
-            </div>
-          </header>
-          <div class="tweet-body">
-            This is the body.
-          </div>
-          <footer class="flex-container">
-            <div class="date">
-              10 days ago.
-            </div>
-
-            <div class="icons flex-container">
-              <div name="report"> 🚩</div>
-              <div name="retweet">🔄</div>
-              <div name="like">♥️</div>
-            </div>
-
-          </footer>
-        </article>
+    </section>
 
 
+    <button id="back-to-top">
+      <img src="/images/up.png">
+    </button>
 
-        <article>
-          <header class="flex-container">
-            <img class="small-profile-image" src="/images/profile-hex.png">
-            <div>
-              Newton
-            </div>
-            <div class="handle">
-              @SirIsaac
-            </div>
-          </header>
-          <div class="tweet-body">
-            This is the body.
-          </div>
-          <footer class="flex-container">
-            <div class="date">
-              10 days ago.
-            </div>
+    <!-- Container for all the tweets -->
+    <section class="tweet-container">
 
-            <div class="icons flex-container">
-              <div name="report"> 🚩</div>
-              <div name="retweet">🔄</div>
-              <div name="like">♥️</div>
-            </div>
-
-          </footer>
-        </article>
-
-      </section>
+      <!-- This is a tweet: -->
 
     </section>
+
+
+    <div id="credits">
+      Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a>
+      from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </div>
   </main>
 
+
 </body>
+
 
 </html>

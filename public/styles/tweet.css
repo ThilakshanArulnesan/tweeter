@@ -22,7 +22,7 @@ article header * {
 }
 
 article header .handle {
-  display: none;
+  opacity: 0;
   position: relative;
   float: right;
   margin-left: auto;
@@ -65,5 +65,5 @@ article:hover {
 }
 
 article:hover .handle {
-  display: inline;
+  opacity: 1;
 }

@@ -27,3 +27,8 @@
   float: right;
   color: red;
 }
+
+#downArrow {
+  height: 30px;
+  width: auto;
+}

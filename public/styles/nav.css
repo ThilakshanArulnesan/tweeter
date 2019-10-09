@@ -12,3 +12,19 @@ nav {
 nav span {
   font-family: 'Bungee', sans-serif;
 }
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  float: right;
+  padding: 0;
+}
+
+nav ul li {
+  color: white;
+  text-align: center;
+}
+
+#downArrow:hover {
+  padding: 3px;
+}
