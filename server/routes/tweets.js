@@ -24,6 +24,7 @@ module.exports = function(DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
     }
+    console.log("received: " + req.body);
     //Checks for a username, assigns a random one else
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
