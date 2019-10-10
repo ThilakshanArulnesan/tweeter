@@ -7,21 +7,18 @@ nav {
   z-index: 1;
   background: #4056A1;
   color: #FFFFFF;
-  padding: 1.5em
+  padding: 1.5em;
 }
-
 nav span {
-  font-family: 'Bungee', sans-serif;
+  font-family: "Bungee", sans-serif;
   font-size: 2rem;
 }
-
 nav ul {
   list-style-type: none;
   margin: 0;
   float: right;
   padding: 0;
 }
-
 nav ul li {
   color: white;
   text-align: center;
@@ -30,3 +27,5 @@ nav ul li {
 #downArrow:hover {
   padding: 3px;
 }
+
+/*# sourceMappingURL=nav.css.map */
