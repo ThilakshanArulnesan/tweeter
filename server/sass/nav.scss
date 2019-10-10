@@ -1,0 +1,38 @@
+$primary-color: #4056A1;
+
+nav{
+
+  position: fixed;
+  top: 0;
+  font-size: 1rem;
+  width: 100%;
+  height: 120px;
+  z-index: 1;
+  background: #4056A1;
+  color: #FFFFFF;
+  padding: 1.5em;
+
+  span {
+    font-family: 'Bungee', sans-serif;
+    font-size: 2rem;
+  };
+
+  ul{
+    list-style-type: none;
+    margin: 0;
+    float: right;
+    padding: 0;
+
+    li{
+      color: white;
+      text-align: center;
+    };
+
+  };
+
+
+}
+
+#downArrow:hover{
+  padding:3px;
+}
