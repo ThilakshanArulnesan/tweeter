@@ -9,8 +9,9 @@ article {
 
 .small-profile-image {
   margin-left: 0.5em;
-  height: 100%;
-  width: 5%;
+  margin-right: 0.5em;
+  height: 70%;
+  width: auto;
 }
 
 article header {
@@ -22,12 +23,15 @@ article header * {
 }
 
 article header .handle {
-  opacity: 0;
   position: relative;
   float: right;
   margin-left: auto;
   margin-right: 1em;
   justify-self: right;
+}
+
+article .icons {
+  opacity: 0;
 }
 
 .flex-container {
@@ -67,6 +71,6 @@ article:hover {
   box-shadow: 5px 10px;
 }
 
-article:hover .handle {
+article:hover .icons {
   opacity: 1;
 }
