@@ -2,7 +2,8 @@ article {
   margin: auto;
   margin-top: 1em;
   border-style: solid;
-  border-color: black;
+  border-radius: 1em;
+  border-color: #172D74;
 }
 
 /* TWEET HEADER */
@@ -32,6 +33,12 @@ article header .handle {
 
 article .icons {
   opacity: 0;
+  margin-right: 1em;
+}
+
+article .icons img {
+  height: 20px;
+  width: auto;
 }
 
 .flex-container {
@@ -62,12 +69,13 @@ article footer {
 
 article footer .date {
   flex-grow: 1;
+  margin-left: 1em;
 }
 
 /* HOVER CHANGES*/
 
 article:hover {
-  border-color: green;
+  border-color: #172D74;
   box-shadow: 5px 10px;
 }
 
