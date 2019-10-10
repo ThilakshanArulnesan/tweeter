@@ -27,9 +27,9 @@ $(document).ready(() => {
      </div>
 
      <div class="icons flex-container">
-       <div name="report"> 🚩</div>
-       <div name="retweet">🔄</div>
-       <div name="like">♥️</div>
+       <div name="report"><img src="/images/flag.png"></div>
+       <div name="retweet"><img src="/images/retweet.png"></div>
+       <div name="like"><img src="/images/like.png"></div>
      </div>
 
    </footer>
@@ -51,10 +51,7 @@ $(document).ready(() => {
     }
     let container = $(".tweet-container");
     container.empty();
-    console.log("ere");
-    console.log(html);
     container.append(html.reverse().join('')); //Append is slow, so good to make the append after building the string.
-    console.log("done append");
   };
 
 
