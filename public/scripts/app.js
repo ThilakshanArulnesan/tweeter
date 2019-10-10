@@ -1,53 +1,12 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- * {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-    "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-    "created_at": 1461116232227
- }
- initial-tweets.json
- */
 
-// Test / driver code (temporary). Eventually will get this from the server.
 $(document).ready(() => {
-  /*const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];*/
-  const getDays = function(time) {
-    //Converts the timestamp to number of days ago.
-    return time;
-  }
+
+  const getDate = function(time) {
+    return new Date(time).toLocaleDateString();
+  };
+
   const createTweetElement = function(t) {
+    //Given a tweet as an object, returns the HTML used to render the tweet.
     return (`
  <article>
    <header class="flex-container">
@@ -64,7 +23,7 @@ $(document).ready(() => {
    </div>
    <footer class="flex-container">
      <div class="date">
-       ${getDays(t.created_at)} days ago.
+      Posted: ${getDate(t.created_at)}
      </div>
 
      <div class="icons flex-container">
@@ -75,14 +34,14 @@ $(document).ready(() => {
 
    </footer>
  </article>`);
+  };
 
-  }
   const escape = function(str) {
+    //Used to prevent bad actors from injecting code to the site
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   }
-
 
   const renderTweets = function(tweets) {
     let html = [];
@@ -92,15 +51,16 @@ $(document).ready(() => {
     }
     let container = $(".tweet-container");
     container.empty();
+    console.log("ere");
+    console.log(html);
     container.append(html.reverse().join('')); //Append is slow, so good to make the append after building the string.
+    console.log("done append");
   };
 
 
-  //Handles button
-  const loadTweets = async () => {
-    //Fetches tweets from http://localhost:8080/tweets
+  async function loadTweets() {
     try {
-      let val = await $.ajax("http://localhost:8080/tweets", {
+      let val = await $.ajax("/tweets", {
         method: 'GET'
       });
 
@@ -111,10 +71,9 @@ $(document).ready(() => {
   }
 
   $(document).on("scroll", (e) => {
+    //Shows/hide the buttons that compose a new tweet and jump the user back to the top of the page
     let that = e.currentTarget;
-
     let scrollHeight = $(that).scrollTop();
-
     if (scrollHeight > 500) {
       $("#nav-buttons").fadeTo(0, 0);
       $("#back-to-top").fadeTo(0, 100);
@@ -125,10 +84,10 @@ $(document).ready(() => {
   });
 
   $("#back-to-top").on("click", e => {
+    //Jumps the user back to the top of the screen and allows the user to compose a new tweet
     window.scrollTo(0, 0);
     const tweetBox = $(".new-tweet");
-
-    $(tweetBox).slideDown(
+    $(tweetBox).slideDown( //Only shows as this button will only be presesed if the user want to compose a tweet, never to hide the composition box.
       () => {
         //Focus only if we are showing it
         $(tweetBox).find("textarea:visible").focus();
@@ -139,7 +98,7 @@ $(document).ready(() => {
 
   $("#downArrow").on("click", () => {
     const tweetBox = $(".new-tweet");
-    tweetBox.slideToggle(
+    tweetBox.slideToggle( //Want the button to show/hide the compose icon
       () => {
         //Focus only if we are showing it
         $(tweetBox).find("textarea:visible").focus();
@@ -151,26 +110,26 @@ $(document).ready(() => {
   loadTweets().then((v) => renderTweets(v));
 
   $("#tweetPost").on("submit", (e) => {
+    //Posts tweet to the DB
     e.preventDefault();
     const obj = e.currentTarget;
-
 
     const textArea = $(obj).find("textarea");
     const userText = textArea.val().trim();
 
-
+    //Resets invalid styling in case its there:
     $(obj).find("textArea").removeClass("invalid");
     $(obj).find("#tweetError").text('').fadeTo(0, 0);
 
     if (!userText) {
+      //Invalid text (empty)
       $(obj).find("textArea").addClass("invalid");
       $(obj).find("#tweetError").text("You must enter valid text!").fadeTo(0, 100);
-
-      // alert('You must enter valid text!');
       return;
     }
 
     if (userText.length > 140) {
+      //Over the limit
       $(obj).find("textArea").addClass("invalid");
       $(obj).find("#tweetError").text('Your text is too long!!').fadeTo(0, 100);
 
@@ -179,19 +138,16 @@ $(document).ready(() => {
       return;
     }
 
-
-
+    $(obj).blur(); //Unfocuses the input
 
     $.post("http://localhost:8080/tweets",
-      $(obj).serialize()
+      $(obj).serialize(), () => {
+        //Wait for the DB to be updated before updating the screen
+        $(obj).find(".counter").text("140");
+        textArea.val('');
+        //Now fetch the new posts:
+        loadTweets().then((v) => renderTweets(v));
+      }
     );
-
-
-    $(obj).find(".counter").text("140");
-
-    textArea.val('');
-
-    //Now fetch the new posts:
-    loadTweets().then((v) => renderTweets(v));
   });
 });
