@@ -18,8 +18,22 @@
 #main-header h2 {
   color: white;
   font-weight: 300;
+  margin: 0;
 }
 
 #main-header h2 b {
   font-weight: 700;
+}
+
+#main-header img {
+  margin: 1em 1em 0em 1em;
+}
+
+@media only screen and (min-width:1024px) {
+  /* Laptop size screen */
+  #main-header {
+    position: relative;
+    width: 30%;
+    margin: 1em;
+  }
 }

@@ -1,3 +1,7 @@
+.new-tweet {
+  display: none;
+}
+
 .new-tweet input {
   border-bottom: 2px;
   color: lavender;
@@ -21,6 +25,20 @@
 .new-tweet .counter {
   float: right;
   color: green;
+}
+
+#tweetError {
+  opacity: 0;
+  color: rgb(253, 68, 68);
+}
+
+.new-tweet textarea.invalid {
+  background-color: rgb(255, 240, 244);
+  border-left: solid;
+  border-right: solid;
+  border-top: solid;
+  border-width: 1px;
+  border-color: #ff6666;
 }
 
 .new-tweet .counter.overlimit {

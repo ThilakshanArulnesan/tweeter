@@ -45,6 +45,9 @@ article .tweet-body {
   border-width: 0px 0px 0.5px 0px;
   margin-left: 1em;
   margin-right: 1em;
+  hyphens: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* TWEET FOOTER */

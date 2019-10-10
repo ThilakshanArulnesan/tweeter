@@ -86,8 +86,7 @@ $(document).ready(() => {
 
   const renderTweets = function(tweets) {
     let html = [];
-    console.log("tweet is");
-    console.log(tweets);
+
     for (let tweet of tweets) {
       html.push(createTweetElement(tweet));
     }
@@ -118,11 +117,25 @@ $(document).ready(() => {
 
     if (scrollHeight > 500) {
       $("#nav-buttons").fadeTo(0, 0);
-
+      $("#back-to-top").fadeTo(0, 100);
     } else {
       $("#nav-buttons").fadeTo(0, 100);
+      $("#back-to-top").fadeTo(0, 0);
     }
   });
+
+  $("#back-to-top").on("click", e => {
+    window.scrollTo(0, 0);
+    const tweetBox = $(".new-tweet");
+
+    $(tweetBox).slideDown(
+      () => {
+        //Focus only if we are showing it
+        $(tweetBox).find("textarea:visible").focus();
+      }
+    );
+  });
+
 
   $("#downArrow").on("click", () => {
     const tweetBox = $(".new-tweet");
@@ -130,7 +143,6 @@ $(document).ready(() => {
       () => {
         //Focus only if we are showing it
         $(tweetBox).find("textarea:visible").focus();
-
       }
     );
 
@@ -144,24 +156,31 @@ $(document).ready(() => {
 
 
     const textArea = $(obj).find("textarea");
-    const userText = textArea.val();
+    const userText = textArea.val().trim();
+
+
+    $(obj).find("textArea").removeClass("invalid");
+    $(obj).find("#tweetError").text('').fadeTo(0, 0);
+
     if (!userText) {
-      alert('You must enter valid text!');
+      $(obj).find("textArea").addClass("invalid");
+      $(obj).find("#tweetError").text("You must enter valid text!").fadeTo(0, 100);
+
+      // alert('You must enter valid text!');
       return;
     }
 
     if (userText.length > 140) {
-      alert('Your text is too long!!');
+      $(obj).find("textArea").addClass("invalid");
+      $(obj).find("#tweetError").text('Your text is too long!!').fadeTo(0, 100);
+
       let aud = $(obj).find("#audio");
       aud[0].play();
       return;
     }
 
-    /* $.ajax({
-       url: "http://localhost:8080/tweets",
-       type: "POST",
-       contents: $(obj).serialize()
-     });*/
+
+
 
     $.post("http://localhost:8080/tweets",
       $(obj).serialize()

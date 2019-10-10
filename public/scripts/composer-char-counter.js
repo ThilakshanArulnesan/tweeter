@@ -1,6 +1,6 @@
 $(document).ready(function() {
   const MAX_CHARS = 140;
-  console.log("Document is ready");
+
   $(".new-tweet textarea").on('input', function() {
 
     let len = $(this).val().length;
