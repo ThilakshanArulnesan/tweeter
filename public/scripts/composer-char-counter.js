@@ -18,7 +18,7 @@ $(document).ready(function() {
     /*The code below is from from https://gomakethings.com/automatically-expand-a-textarea-as-the-user-types-using-vanilla-javascript/ */
 
     // Reset textbox height
-    textbox = e.target;
+    let textbox = e.target;
     textbox.style.height = '1.5em'; //Default height.
 
     // Get the computed styles for the element
@@ -36,7 +36,7 @@ $(document).ready(function() {
   });
 
   $(".new-tweet textarea").on('keyup', e => {
-    if (e.which == 13 && !e.shiftKey) {
+    if (e.which === 13 && !e.shiftKey) {
 
       $("#tweetPost").trigger("submit");
       //clear the form

@@ -64,7 +64,7 @@ $(document).ready(() => {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
-  }
+  };
 
   const renderTweets = function(tweets, isInitialLoad = true) {
     let html = [];
@@ -102,7 +102,7 @@ $(document).ready(() => {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   $(document).on("scroll", (e) => {
     //Shows/hide the buttons that compose a new tweet and jump the user back to the top of the page
@@ -117,7 +117,7 @@ $(document).ready(() => {
     }
   });
 
-  $("#back-to-top").on("click", e => {
+  $("#back-to-top").on("click", () => {
     //Jumps the user back to the top of the screen and allows the user to compose a new tweet
     window.scrollTo(0, 0);
     const tweetBox = $(".new-tweet");
