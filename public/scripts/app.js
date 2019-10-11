@@ -2,7 +2,30 @@
 $(document).ready(() => {
 
   const getDate = function(time) {
-    return new Date(time).toLocaleDateString();
+    //Calculates how long ago a tweet was in an appropriate unit.
+    let ms = (new Date() - new Date(time));
+    let s = ms / 1000;
+    let min = s / 60;
+    let h = min / 60;
+    let days = h / 24;
+    let months = days / 30;// Not exact, but a good enough approximation for our purposes (users will only need a general idea of when the tweet was made)
+    let years = months / 12;
+
+    if (ms < 1000) {
+      return Math.floor(ms) + " milliseconds";
+    } else if (s < 60) {
+      return Math.floor(s) + " seconds";
+    } else if (min < 60) {
+      return Math.floor(min) + " minutes";
+    } else if (h < 24) {
+      return Math.floor(h) + " hours";
+    } else if (days < 30) {
+      return Math.floor(days) + " days";
+    } else if (months < 12) {
+      return Math.floor(months) + " months";
+    } else {
+      return Math.floor(years) + " years";
+    }
   };
 
   const createTweetElement = function(t) {
@@ -23,7 +46,7 @@ $(document).ready(() => {
    </div>
    <footer class="flex-container">
      <div class="date">
-      Posted: ${getDate(t.created_at)}
+      Posted: ${getDate(t.created_at)} ago
      </div>
 
      <div class="icons flex-container">
