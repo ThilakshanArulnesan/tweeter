@@ -66,15 +66,29 @@ $(document).ready(() => {
     return div.innerHTML;
   }
 
-  const renderTweets = function(tweets) {
+  const renderTweets = function(tweets, isInitialLoad = true) {
     let html = [];
 
     for (let tweet of tweets) {
       html.push(createTweetElement(tweet));
     }
+    if (!isInitialLoad) {
+      html[html.length - 1] = html[html.length - 1].replace(`<article>`, `<article class="invis">`);
+    }
+
     let container = $(".tweet-container");
     container.empty();
     container.append(html.reverse().join('')); //Append is slow, so good to make the append after building the string.
+
+    //Do an animation:
+    if (!isInitialLoad) {
+      let lastTweet = $("article.invis");
+      lastTweet.addClass("bounce");
+      lastTweet.slideDown(250, () => {
+        lastTweet.removeClass("invis");
+      });
+
+    }
   };
 
 
@@ -161,14 +175,15 @@ $(document).ready(() => {
 
     $(obj).blur(); //Unfocuses the input
 
-    $(textArea).height("1.5em");
+    $(textArea).height("1.5em"); //Resets the height to default
+
     $.post("http://localhost:8080/tweets",
       $(obj).serialize(), () => {
         //Wait for the DB to be updated before updating the screen
         $(obj).find(".counter").text("140");
         textArea.val('');
         //Now fetch the new posts:
-        loadTweets().then((v) => renderTweets(v));
+        loadTweets().then((v) => renderTweets(v, false));
       }
     );
   });
