@@ -5,6 +5,8 @@
 .new-tweet input {
   border-bottom: 2px;
   color: lavender;
+  outline: none;
+  /* removes blue highlighting*/
   background: #4056A1;
   display: inline;
   font-family: 'Bungee', sans-serif;
