@@ -35,7 +35,8 @@ If a user scrolls down far enough an icon will appear on the bottom right allowi
 
 ### Desktop View
 ![desktop view of site](public/images/desktop.png)
-In desktop view the profile image will display on the left-side of the screen.
+In desktop view the profile image will display on the left-side of the screen. This view will trigger for an screen with a screenwidth greater than 1024 px.
+
 
 ## Dependencies
 - Express
