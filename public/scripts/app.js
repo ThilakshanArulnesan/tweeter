@@ -152,9 +152,10 @@ $(document).ready(() => {
       //Over the limit
       $(obj).find("textArea").addClass("invalid");
       $(obj).find("#tweetError").text('Your text is too long!!').fadeTo(0, 100);
-
-      let aud = $(obj).find("#audio");
-      aud[0].play();
+      /* Uncomment this code if you want to hear the sound effect. I removed it as it could get fairly loud!
+            let aud = $(obj).find("#audio");
+            aud[0].play();
+            */
       return;
     }
 
