@@ -12,7 +12,7 @@ $(document).ready(() => {
     let years = months / 12;
 
     if (ms < 1000) {
-      return Math.floor(ms) + " milliseconds";
+      return "1 second";
     } else if (s < 60) {
       return Math.floor(s) + " seconds";
     } else if (min < 60) {
@@ -46,7 +46,7 @@ $(document).ready(() => {
    </div>
    <footer class="flex-container">
      <div class="date">
-      Posted: ${getDate(t.created_at)} ago
+      Posted about ${getDate(t.created_at)} ago
      </div>
 
      <div class="icons flex-container">
@@ -161,6 +161,7 @@ $(document).ready(() => {
 
     $(obj).blur(); //Unfocuses the input
 
+    $(textArea).height("1.5em");
     $.post("http://localhost:8080/tweets",
       $(obj).serialize(), () => {
         //Wait for the DB to be updated before updating the screen
